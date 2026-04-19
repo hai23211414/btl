@@ -1,1 +1,18 @@
-{\n  "name": "my-express-app",\n  "version": "1.0.0",\n  "description": "A simple Express server",\n  "main": "index.js",\n  "scripts": {\n    "start": "node index.js"\n  },\n  "dependencies": {\n    "express": "^4.17.1",\n    "cors": "^2.8.5",\n    "body-parser": "^1.19.0"\n  },\n  "engines": {\n    "node": ">=12.x"\n  }\n}
+{
+  "name": "btl-english-learning",
+  "version": "1.0.0",
+  "description": "English learning website with vocabulary and grammar lessons",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
