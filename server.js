@@ -1,22 +1,27 @@
 const express = require('express');
-const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
-// Vocabulary API endpoint
-app.get('/api/vocabulary', (req, res) => {
-    res.json({ message: 'Vocabulary data' });
-});
+// Import routes
+const vocabularyRoutes = require('./routes/vocabulary');
+const grammarRoutes = require('./routes/grammar');
 
-// Grammar API endpoint
-app.get('/api/grammar', (req, res) => {
-    res.json({ message: 'Grammar data' });
+// Use routes
+app.use('/api/vocabulary', vocabularyRoutes);
+app.use('/api/grammar', grammarRoutes);
+
+// Home route
+app.get('/', (req, res) => {
+  res.send('Welcome to English Learning Website');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
